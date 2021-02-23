@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Vue Component Registration</title>
+    </head>
+    <body>
+        <div id ="app">
+
+            <child-component v-bind:propsdata="message"></child-component>
+        </div>
+
+        </div>
+        <hr>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+
+            Vue.component('child-component', {
+                props: ['propsdata'],
+                template: '<p>{{propsdata}}</p>',
+            });
+            new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue! passsed from Parent Component'
+                }
+            });
+        
+        </script>
+    </body>
+</html>
