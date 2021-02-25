@@ -1,0 +1,38 @@
+<!-- 버튼을 하나 클릭하면 지정한 URL의 데이터를 가져오는 예제-->
+<html>
+    <head>
+        <meta charset="utf8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue Nested Router</title>
+    </head>
+    <body>
+        <div id ="app">
+           <button v-on:click="getData">프레임워크 목록 가져오기</button>
+        </div>
+
+        <hr>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script> <!-- 뷰 리소스 CDN-->
+        <script>
+            new Vue({
+                el: '#app',
+                methods: {
+                    getData: function() {
+                        this.$http.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
+                        .then(function(response) {
+                            console.log(response);
+                            console.log(JSON.parse(response.data));
+                        })
+                    }
+                }
+            });
+            
+
+            var app = new Vue({
+                router
+            }).$mount('#app');
+
+        
+        </script>
+    </body>
+</html>
